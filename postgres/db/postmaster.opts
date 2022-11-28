@@ -1,0 +1,1 @@
+/nix/store/1hndjix70n1aa46xvvl0mq9qfl8r89hi-postgresql-13.5/bin/postgres "-D" "db" "--unix_socket_directories=/home/josemaria/Documents/Code/url-shortener/postgres"

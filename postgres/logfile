@@ -1,0 +1,46 @@
+2022-10-29 15:11:35.138 BST [443766] LOG:  starting PostgreSQL 13.5 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 10.3.0, 64-bit
+2022-10-29 15:11:35.139 BST [443766] LOG:  listening on IPv6 address "::1", port 5432
+2022-10-29 15:11:35.139 BST [443766] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-10-29 15:11:35.141 BST [443766] LOG:  listening on Unix socket "/home/josemaria/Documents/Code/url-shortener/postgres/.s.PGSQL.5432"
+2022-10-29 15:11:35.143 BST [443767] LOG:  database system was shut down at 2022-10-29 15:11:34 BST
+2022-10-29 15:11:35.146 BST [443766] LOG:  database system is ready to accept connections
+2022-10-29 15:11:52.662 BST [443801] FATAL:  lock file "postmaster.pid" already exists
+2022-10-29 15:11:52.662 BST [443801] HINT:  Is another postmaster (PID 443766) running in data directory "/home/josemaria/Documents/Code/url-shortener/postgres/db"?
+2022-10-29 15:12:08.400 BST [443819] FATAL:  database "test" does not exist
+2022-10-29 15:40:02.814 BST [448614] ERROR:  relation "url_table" does not exist at character 26
+2022-10-29 15:40:02.814 BST [448614] STATEMENT:  SELECT original_url FROM url_table WHERE short_url = '1234'
+2022-10-29 20:11:52.962 BST [453111] ERROR:  syntax error at or near "[" at character 14
+2022-10-29 20:11:52.962 BST [453111] STATEMENT:  CREATE TABLE [IF NOT EXISTS] url_table (
+	  id           BIGSERIAL    NOT NULL PRIMARY KEY,
+	  original_url VARCHAR(500) NOT NULL,
+	  url_key      UUID         NOT NULL REFERENCES key_table (url_key),
+	  api_dev_key  UUID         NOT NULL REFERENCES user_table (api_dev_key),
+	  expire_date  TIMESTAMP,
+	  UNIQUE (url_key)
+	);
+2022-10-29 20:11:52.962 BST [453111] ERROR:  syntax error at or near "[" at character 14
+2022-10-29 20:11:52.962 BST [453111] STATEMENT:  CREATE TABLE [IF NOT EXISTS] key_table (
+	  url_key UUID NOT NULL PRIMARY KEY,
+	  used         Boolean NOT NULL,
+	  UNIQUE (url_key)
+	);
+2022-10-29 20:11:52.962 BST [453111] ERROR:  syntax error at or near "[" at character 14
+2022-10-29 20:11:52.962 BST [453111] STATEMENT:  CREATE TABLE [IF NOT EXISTS] user_table (
+	  api_dev_key   UUID         NOT NULL PRIMARY KEY,
+	  user_name     VARCHAR(100) NOT NULL,
+	  user_password VARCHAR(100) NOT NULL,
+	  UNIQUE (api_dev_key)
+	);
+2022-10-29 20:12:40.035 BST [453111] ERROR:  relation "key_table" does not exist
+2022-10-29 20:12:40.035 BST [453111] STATEMENT:  CREATE TABLE IF NOT EXISTS url_table (
+	  id           BIGSERIAL    NOT NULL PRIMARY KEY,
+	  original_url VARCHAR(500) NOT NULL,
+	  url_key      UUID         NOT NULL REFERENCES key_table (url_key),
+	  api_dev_key  UUID         NOT NULL REFERENCES user_table (api_dev_key),
+	  expire_date  TIMESTAMP,
+	  UNIQUE (url_key)
+	);
+2022-11-07 08:30:16.476 GMT [443766] LOG:  received smart shutdown request
+2022-11-07 08:30:16.478 GMT [443766] LOG:  background worker "logical replication launcher" (PID 443773) exited with exit code 1
+2022-11-07 08:30:16.478 GMT [443768] LOG:  shutting down
+2022-11-07 08:30:16.488 GMT [443766] LOG:  database system is shut down

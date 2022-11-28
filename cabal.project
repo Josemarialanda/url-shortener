@@ -1,0 +1,5 @@
+packages:
+  ./
+
+package url-shortener
+  tests: True

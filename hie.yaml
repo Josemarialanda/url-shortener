@@ -1,0 +1,16 @@
+cradle:
+  multi:
+    # - path: "ignore/"
+    #   config: {cradle: {none: }}
+
+    - path: "src"
+      config: {cradle: {cabal: {component: "lib:url-shortener"}}}
+
+    - path: "app"
+      config: {cradle: {cabal: {component: "url-shortener:url-shortener-exe"}}}
+
+    - path: "test"
+      config: {cradle: {cabal: {component: "url-shortener:url-shortener-test"}}}
+
+    - path: "bench"
+      config: {cradle: {cabal: {component: "url-shortener:url-shortener-bench"}}}
